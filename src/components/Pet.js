@@ -2,18 +2,20 @@ import React from 'react'
 
 class Pet extends React.Component {
   render() {
+
+    // console.log(this.props);
+    
     return (
       <div className="card">
         <div className="content">
           <a className="header">
-            {/*'♀' OR '♂' */}
-            PET NAME
+            {this.props.pet.name}
           </a>
           <div className="meta">
-            <span className="date">PET TYPE</span>
+    <span className="date">{this.props.pet.type}</span>
           </div>
           <div className="description">
-            <p>Age: PET AGE</p>
+    <p>{this.props.pet.age}</p>
             <p>Weight: PET WEIGHT</p>
           </div>
         </div>

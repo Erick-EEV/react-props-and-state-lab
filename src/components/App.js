@@ -26,6 +26,7 @@ class App extends React.Component {
   onFindPetsClick(){
     const url = "/api/pets"
     let type = this.state.filters.type
+    console.log(type);
     fetch(`${url}?type=${type}`)
     .then(resp => resp.json())
     .then(allPets => this.setState({
@@ -48,7 +49,7 @@ class App extends React.Component {
               fetchAll={() => this.onFindPetsClick()}/>
             </div>
             <div className="twelve wide column">
-              <PetBrowser />
+              <PetBrowser pets={this.state.pets}/>
             </div>
           </div>
         </div>
