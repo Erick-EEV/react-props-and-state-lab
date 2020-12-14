@@ -15,13 +15,13 @@ class Pet extends React.Component {
     <span className="date">{this.props.pet.type}</span>
           </div>
           <div className="description">
-    <p>{this.props.pet.age}</p>
-            <p>Weight: PET WEIGHT</p>
+    <p>{this.props.pet.age} years old</p>
+            <p>{this.props.pet.weight} .lbs</p>
           </div>
         </div>
         <div className="extra content">
-          <button className="ui disabled button">Already adopted</button>
-          <button className="ui primary button">Adopt pet</button>
+          {this.props.pet.isAdopted ? <button className="ui disabled button">Already adopted</button> :
+           <button onClick={() => this.props.onAdoptPet(this.props.pet.id)} className="ui primary button">Adopt pet</button>}
         </div>
       </div>
     )

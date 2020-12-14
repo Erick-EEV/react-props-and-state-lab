@@ -17,7 +17,7 @@ class Filters extends React.Component {
         </div>
 
         <div className="field">
-          <button onClick={this.props.fetchAll} className="ui secondary button">Find pets</button>
+          <button onClick={() => this.props.fetchAll()} className="ui secondary button">Find pets</button>
         </div>
       </div>
     )

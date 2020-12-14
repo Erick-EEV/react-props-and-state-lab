@@ -24,14 +24,23 @@ class App extends React.Component {
   }
 
   onFindPetsClick(){
-    const url = "/api/pets"
     let type = this.state.filters.type
-    console.log(type);
-    fetch(`${url}?type=${type}`)
+    let url = this.state.filters.type === 'all' ? "/api/pets" : `/api/pets?type=${type}`
+
+    fetch(url)
     .then(resp => resp.json())
     .then(allPets => this.setState({
       pets: allPets
     }))
+  }
+
+  onAdoptPet = (id) => {
+    const petsArray = this.state.pets.map(pet => {
+      return pet.id === id ? {...pet, isAdopted: true} : pet
+    })
+    this.setState({
+      pets: petsArray
+    })
   }
 
 
@@ -49,7 +58,7 @@ class App extends React.Component {
               fetchAll={() => this.onFindPetsClick()}/>
             </div>
             <div className="twelve wide column">
-              <PetBrowser pets={this.state.pets}/>
+              <PetBrowser pets={this.state.pets} onAdoptPet={this.onAdoptPet}/>
             </div>
           </div>
         </div>
